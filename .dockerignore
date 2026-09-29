@@ -1,0 +1,9 @@
+.git
+.gitignore
+ML-Project
+dataset
+**/__pycache__
+**/node_modules
+**/.env
+*.pyc
+eda_plots
