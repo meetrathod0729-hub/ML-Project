@@ -1,3 +1,4 @@
+﻿import API_URL from "../config";
 import { useEffect, useMemo, useState } from "react";
 
 function APIEvents({ searchQuery = "" }) {
@@ -28,7 +29,7 @@ function APIEvents({ searchQuery = "" }) {
             setError("");
 
             const response = await fetch(
-                "http://localhost:5000/api/events"
+                `${API_URL}/api/events`
             );
 
             if (!response.ok) {
@@ -211,14 +212,14 @@ function APIEvents({ searchQuery = "" }) {
 
     const formatDate = (date) => {
 
-        if (!date) return "—";
+        if (!date) return "â€”";
 
 
         const parsed = new Date(date);
 
 
         if (Number.isNaN(parsed.getTime())) {
-            return "—";
+            return "â€”";
         }
 
 
@@ -239,7 +240,7 @@ function APIEvents({ searchQuery = "" }) {
     const formatScore = (score) => {
 
         if (typeof score !== "number") {
-            return "—";
+            return "â€”";
         }
 
 
@@ -297,7 +298,7 @@ function APIEvents({ searchQuery = "" }) {
                         fontWeight: "600",
                     }}
                 >
-                    ↻ Refresh
+                    â†» Refresh
                 </button>
 
             </div>
@@ -725,7 +726,7 @@ function APIEvents({ searchQuery = "" }) {
                                                         }}
                                                     >
                                                         {event.method ||
-                                                            "—"}
+                                                            "â€”"}
                                                     </span>
 
                                                 </td>
@@ -744,7 +745,7 @@ function APIEvents({ searchQuery = "" }) {
                                                         }}
                                                     >
                                                         {event.requestUrl ||
-                                                            "—"}
+                                                            "â€”"}
                                                     </span>
 
                                                 </td>
@@ -761,7 +762,7 @@ function APIEvents({ searchQuery = "" }) {
                                                         }}
                                                     >
                                                         {event.sourceIp ||
-                                                            "—"}
+                                                            "â€”"}
                                                     </span>
 
                                                 </td>
@@ -783,7 +784,7 @@ function APIEvents({ searchQuery = "" }) {
                                                         }}
                                                     >
                                                         {event.status ??
-                                                            "—"}
+                                                            "â€”"}
                                                     </span>
 
                                                 </td>
@@ -972,7 +973,7 @@ function APIEvents({ searchQuery = "" }) {
                             marginLeft: "6px",
                         }}
                     >
-                        ·{" "}
+                        Â·{" "}
                         {stats.total.toLocaleString()}
                         {" "}
                         total events

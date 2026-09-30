@@ -1,3 +1,4 @@
+﻿import API_URL from "../config";
 import { useEffect, useMemo, useState } from "react";
 
 function Anomalies() {
@@ -23,7 +24,7 @@ function Anomalies() {
             }
 
             const response = await fetch(
-                "http://localhost:5000/api/events"
+                `${API_URL}/api/events`
             );
 
             if (!response.ok) {
@@ -154,7 +155,7 @@ function Anomalies() {
                           0
                       ) / thresholds.length
                   ).toFixed(3)
-                : "—";
+                : "â€”";
 
         return {
             total,
@@ -169,12 +170,12 @@ function Anomalies() {
     // =========================================================
 
     const formatDate = (date) => {
-        if (!date) return "—";
+        if (!date) return "â€”";
 
         const parsed = new Date(date);
 
         if (Number.isNaN(parsed.getTime())) {
-            return "—";
+            return "â€”";
         }
 
         return parsed.toLocaleString([], {
@@ -540,7 +541,7 @@ function Anomalies() {
 
                                                 <span className="ip-text">
                                                     {event.sourceIp ||
-                                                        "—"}
+                                                        "â€”"}
                                                 </span>
 
                                             </td>
@@ -774,7 +775,7 @@ function Anomalies() {
                                 <span>SOURCE IP</span>
                                 <strong>
                                     {selectedEvent.sourceIp ||
-                                        "—"}
+                                        "â€”"}
                                 </strong>
                             </div>
 
@@ -783,7 +784,7 @@ function Anomalies() {
                                 <span>SOURCE PORT</span>
                                 <strong>
                                     {selectedEvent.sourcePort ||
-                                        "—"}
+                                        "â€”"}
                                 </strong>
                             </div>
 
@@ -792,7 +793,7 @@ function Anomalies() {
                                 <span>TARGET IP</span>
                                 <strong>
                                     {selectedEvent.targetIp ||
-                                        "—"}
+                                        "â€”"}
                                 </strong>
                             </div>
 
@@ -801,7 +802,7 @@ function Anomalies() {
                                 <span>TARGET PORT</span>
                                 <strong>
                                     {selectedEvent.targetPort ||
-                                        "—"}
+                                        "â€”"}
                                 </strong>
                             </div>
 

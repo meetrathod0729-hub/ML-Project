@@ -1,3 +1,4 @@
+﻿import API_URL from "../config";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext";
@@ -41,20 +42,20 @@ function Dashboard() {
                     methodResponse,
                     anomaliesResponse,
                 ] = await Promise.all([
-                    fetch("http://localhost:5000/api/dashboard/stats", {
+                    fetch(`${API_URL}/api/dashboard/stats`, {
                         headers,
                     }),
 
-                    fetch("http://localhost:5000/api/dashboard/timeline", {
+                    fetch(`${API_URL}/api/dashboard/timeline`, {
                         headers,
                     }),
 
-                    fetch("http://localhost:5000/api/dashboard/method", {
+                    fetch(`${API_URL}/api/dashboard/method`, {
                         headers,
                     }),
 
                     fetch(
-                        "http://localhost:5000/api/dashboard/recent-anomalies",
+                        `${API_URL}/api/dashboard/recent-anomalies`,
                         {
                             headers,
                         }
@@ -283,12 +284,12 @@ function Dashboard() {
     // =========================================================
 
     const formatDate = (date) => {
-        if (!date) return "—";
+        if (!date) return "â€”";
 
         const parsed = new Date(date);
 
         if (Number.isNaN(parsed.getTime())) {
-            return "—";
+            return "â€”";
         }
 
         return parsed.toLocaleString([], {
@@ -1117,7 +1118,7 @@ function Dashboard() {
                                                 >
                                                     {
                                                         event.method ||
-                                                        "—"
+                                                        "â€”"
                                                     }
                                                 </td>
 
@@ -1142,7 +1143,7 @@ function Dashboard() {
                                                 >
                                                     {
                                                         event.requestUrl ||
-                                                        "—"
+                                                        "â€”"
                                                     }
                                                 </td>
 
@@ -1159,7 +1160,7 @@ function Dashboard() {
                                                 >
                                                     {
                                                         event.sourceIp ||
-                                                        "—"
+                                                        "â€”"
                                                     }
                                                 </td>
 
@@ -1181,7 +1182,7 @@ function Dashboard() {
                                                         ? event.anomalyScore.toFixed(
                                                               3
                                                           )
-                                                        : "—"}
+                                                        : "â€”"}
                                                 </td>
 
 

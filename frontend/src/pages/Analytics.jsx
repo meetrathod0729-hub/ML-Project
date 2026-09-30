@@ -1,3 +1,4 @@
+﻿import API_URL from "../config";
 import { useEffect, useMemo, useState } from "react";
 
 function Analytics() {
@@ -10,7 +11,7 @@ function Analytics() {
             setError("");
 
             const response = await fetch(
-                "http://localhost:5000/api/events"
+                `${API_URL}/api/events`
             );
 
             if (!response.ok) {
@@ -91,7 +92,7 @@ function Analytics() {
                           0
                       ) / thresholds.length
                   ).toFixed(3)
-                : "—";
+                : "â€”";
 
         return {
             total,

@@ -1,3 +1,4 @@
+﻿import API_URL from "../config";
 import {
     createContext,
     useContext,
@@ -37,7 +38,7 @@ export function AuthProvider({ children }) {
     const login = async (email, password) => {
 
         const response = await fetch(
-            "http://localhost:5000/api/auth/login",
+            `${API_URL}/api/auth/login`,
             {
                 method: "POST",
 
@@ -90,7 +91,7 @@ export function AuthProvider({ children }) {
     ) => {
 
         const response = await fetch(
-            "http://localhost:5000/api/auth/register",
+            `${API_URL}/api/auth/register`,
             {
                 method: "POST",
 
